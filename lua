@@ -80,30 +80,6 @@ FarmingSection:CreateButton({
     end
 })
 
--- Anti-Chat Logging
-local function AntiChatLog()
-    local SafeCall = function(func)
-        local success, err = pcall(func)
-        if not success then
-            warn("Error in function: ", err)
-        end
-    end
-    
-    SafeCall(function()
-        while true do
-            task.wait(0.1)
-            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Ro-Rift made by trialmeme", "All")
-        end
-    end)
-end
-
-FarmingSection:CreateButton({
-    Name = "Anti-Chat Logging",
-    Callback = function()
-        AntiChatLog()
-    end
-})
-
 -- Ensure the script is safe to run
 xpcall(function()
     coroutine.wrap(function()
